@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<style>
+
+   *{
+       margin: 0;
+       body:0;
+   }
+
+    .container{
+        display: flex;
+        /*flex-direction: row;*/
+        /*flex-wrap: nowrap;*/
+        flex-flow: row wrap ;
+        align-items: flex-start;
+        /*align-content: center;*/
+        justify-content: center;
+        height: 500px;
+        border: 1px solid red;
+
+
+    }
+
+    span{
+        height: 100px;
+        width: 300px;
+        border: 1px solid black;
+        font-size: 24px;
+        text-align: center;
+        color: red;
+
+    }
+
+    .c1 {
+        height: 300px;
+        font-size: 50px;
+        /*flex-grow: 1;*/
+        flex-shrink: 2;
+        order: 5
+
+    }
+
+    .c2 {
+        flex-shrink: 3;
+        order: 6;
+        align-self: flex-end;
+        flex-basis: 350px;
+    }
+
+
+</style>
+<body>
+
+
+
+<div class="container">
+
+    <span>0<br/>0</span>
+    <span class="c1">1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span class="c2">6</span>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+</div>
+</body>
+</html>

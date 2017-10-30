@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #marquee{
+            position: relative;
+            width: 600px;
+            overflow: hidden;
+            border: 8px solid salmon;
+
+        }
+        #marquee img,  #marquee dd, #marquee dt{
+            float:left;
+            margin:0;
+            padding:0;
+        }
+        #marquee dl{
+            height: 200px;
+            width:1000%;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="marquee">
+    <dl >
+        <dt>
+            <img src="../cat/0.jpg" alt="">
+            <img src="../cat/1.jpg" alt="">
+            <img src="../cat/2.jpg" alt="">
+            <img src="../cat/3.jpg" alt="">
+            <img src="../cat/4.jpg" alt="">
+            <img src="../cat/5.jpg" alt="">
+            <img src="../cat/6.jpg" alt="">
+            <img src="../cat/7.jpg" alt="">
+            <img src="../cat/8.jpg" alt="">
+            <img src="../cat/9.jpg" alt="">
+        </dt>
+        <dd>
+        </dd>
+    </dl>
+</div>
+
+
+<script type="text/javascript">
+
+    var Marquee = function(id) {
+
+        var container = document.getElementById(id)
+        var dtEle = document.getElementsByTagName('dt')[0];
+        var ddEle = document.getElementsByTagName('dd')[0];
+        ddEle.innerHTML = dtEle.innerHTML;
+//        var rolling = function() {
+//            if (container.scrollTop == ddEle.offsetTop){
+//                container.scrollTop = 0;
+//            } else {
+//                container.scrollTop++;
+//            }
+//        }
+
+        var rollingLeft = function() {
+
+            if (container.scrollLeft == ddEle.offsetLeft){
+                container.scrollLeft = 0;
+            } else {
+                container.scrollLeft++;
+            }
+        }
+
+        var speed = arguments[1] || 10;
+
+//        var timer = setInterval(rolling, speed);
+        var timer1 = setInterval(rollingLeft, speed)
+//        container.onmouseover=function() {
+//            clearInterval(timer);
+//        }
+//        container.onmouseout=function() {
+//           timer = setInterval(rolling,speed);
+//        }
+
+    }
+
+    window.onload = function(){Marquee("marquee")}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test tables</title>
+</head>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 500px;
+    }
+    tr th{
+        background-color:#aaaaff;
+        color: black;
+        text-align: left;
+    }
+    tr th:last-child{
+        text-align: right;
+    }
+    tr:nth-of-type(odd){
+        background-color: #abd5fd;
+    }
+    tr:nth-of-type(even){
+        background-color: #00a3cc;
+    }
+    tr:nth-last-of-type(-n+3){
+        text-align: right;
+        font-weight: bolder;
+    }
+    tr td:last-child{
+        font-size: larger;
+        font-weight: bold;
+        text-align: right;
+    }
+</style>
+<body>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>Book</td>
+            <td>$5</td>
+            <td>5</td>
+            <td>$25</td>
+        </tr>
+        <tr>
+            <td>Pen</td>
+            <td>$2</td>
+            <td>20</td>
+            <td>$40</td>
+        </tr>
+        <tr>
+            <td>pencil box</td>
+            <td>$10</td>
+            <td>10</td>
+            <td>$100</td>
+        </tr>
+        <tr>
+            <td colspan="3"> Total</td>
+            <td>$165</td>
+        </tr>
+        <tr>
+            <td colspan="3">Shipping</td>
+            <td> $12</td>
+        </tr>
+        <tr>
+            <td colspan="3">Total price</td>
+            <td> $177</td>
+        </tr>
+    </table>
+
+</div>
+
+<div>
+    <p></p>
+</div>
+</body>
+</html>

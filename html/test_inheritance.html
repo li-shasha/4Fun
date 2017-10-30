@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link rel="stylesheet" type="text/css" href="">-->
+    <script src="./js/testJs1.js"></script>
+</head>
+<body>
+
+<script>
+
+    //factory pattern
+    function Person(name, age){
+        var obj = new Object();
+        obj.name = name;
+        obj.age = age;
+        obj.sayHi = function(){
+            console.log("hi factory:")
+        }
+        return obj;
+    }
+
+    var person1 = Person('lisa', 25);
+    var person2 = Person('penny', 24);
+
+    person1.sayHi();
+    person2.sayHi();
+
+
+   // constructor
+
+    function Person(name, age){
+
+        this.name = name;
+        this.age = age;
+        this.sayHi = function(){
+            console.log('Hi, ' + this.name);
+        };
+    }
+
+    var person3 = new Person('piggy', 20);
+    person3.sayHi();
+
+   // prototype
+
+    function Person(){
+
+    }
+
+    Person.prototype.name = 'lisaa';
+    Person.prototype.age= 20;
+    Person.prototype.sayHi= function(){
+        console.log('Hiii:~~~:'+this.name);
+    }
+    var person4 = new Person();
+    person4.sayHi();
+
+
+    //mixed mode(prototype & constructor):
+    function Person(name, age){
+        this.name =name;
+        this.age = age;
+    }
+
+    Person.prototype.sayHi = function(){
+        console.log('Hi, sister:'+this.name);
+    }
+
+    var person5 = new Person('Sheep', 14);
+    person5.sayHi();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<p id="demo"></p>
+
+</body>
+</html>

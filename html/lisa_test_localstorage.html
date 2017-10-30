@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test localstorage and sessionstorage</title>
+</head>
+<body>
+
+
+<div>
+    <input type="button" onclick="clickCounter()" id="localstorage" value="click me!">
+
+    local storage has clicked <p id="result">  </p> times!!
+</div>
+
+
+<div>
+    <input type="button" onclick="clickCounter1()" id="sessionstorage" value="click me!">
+    session storage has clicked    <p id="result1">  </p> times!!
+</div>
+
+<script type="text/javascript">
+    function clickCounter(){
+
+        if (typeof(Storage) != "undefined" ){
+            if (localStorage.localCount){
+                localStorage.localCount = Number(localStorage.localCount) +1;
+            } else {
+                localStorage.localCount =1;
+            }
+        document.getElementById("result").innerHTML = localStorage.localCount;
+        }
+    }
+
+    function clickCounter1(){
+        if (typeof(Storage) != "undefined" ){
+            if (sessionStorage.localCount){
+                sessionStorage.localCount =Number(sessionStorage.localCount) + 1;
+            } else {
+                sessionStorage.localCount =1;
+            }
+            document.getElementById("result1").innerHTML = sessionStorage.localCount;
+        }
+    }
+
+
+</script>
+</body>
+</html>
