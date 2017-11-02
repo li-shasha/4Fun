@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue example 4</title>
+
+</head>
+<body>
+
+<div id="watch-example">
+    <p>
+        Ask a yes/no question:
+        <input v-model="question">
+    </p>
+    <p>{{answer}}</p>
+
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script>
+
+        var watchExampleVm = new Vue({
+            el: "#watch-example",
+            data: {
+                question: '',
+                answer: 'I cannot give you an answer until you ask a question!'
+            },
+            watch: {
+                question: function(newQuestion) {
+                    this.answer = 'waiting for you to stop typing';
+                    this.getAnswer()
+                }
+            },
+            methods: {
+                getAnswer: _.debounce(
+                    function() {
+                        if(this.question.indexOf('?') === -1) {
+                            this.answer = 'Questions always has a question mark.'
+                            return
+                        }
+                        this.answer = 'Thinking...';
+                        var vm = this;
+                        axios.get('https://yesno.wtf/api').then(function(response) {
+                            vm.answer = _.capitalize(response.data.answer)
+                        }).catch(function(err) {
+                            vm.answer = 'Error: could not reach the API.'+ err;
+                        })
+                        
+                    },
+                    500
+                )
+            }
+        })
+        
+
+    </script>
+</div>
+</body>
+</html>

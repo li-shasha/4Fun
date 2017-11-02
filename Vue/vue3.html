@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue example 3</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">{{fullname}}</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            firstname: "shasha",
+            lastname: "li",
+        },
+        computed: {
+            fullname: {
+                //getter
+                get: function() {
+                    return this.firstname + " " + this.lastname;
+                },
+                //setter
+                set: function(val) {
+                    var arr = val.split(' ');
+                    this.firstname = arr[0];
+                    this.lastname = arr[1];
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
