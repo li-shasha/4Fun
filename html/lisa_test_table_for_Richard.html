@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test tables</title>
+</head>
+
+<style>
+    table {
+        padding: 10px;
+        width: 100%;
+        line-height: 2;
+        border-collapse: collapse;
+    }
+    tr td{
+        padding-left: 10px;
+    }
+    tr th{
+        background-color:#aaaaff;
+        color: black;
+        text-align: left;
+        padding-left: 10px;
+    }
+    tr:nth-of-type(odd){
+        background-color: rgba(87,255,142,0.33) ;
+    }
+    tr:nth-of-type(even){
+        background-color: #abd5fd;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+
+<div id="content">
+
+</div>
+<script>
+    $.ajax({
+        url: '../data/test.csv',
+        dataType: 'text'
+    }).done(successFunction)
+
+    function successFunction(data) {
+        var allRows = data.split(/\r?\n|\r/);
+        var table = '<table>';
+        for(var row =0; row < allRows.length; row ++){
+            table += '<tr>';
+
+            var rowCells = allRows[row].split(",")
+            for(var rowCell=0; rowCell<rowCells.length; rowCell++){
+                if(row == 0) {
+                    table += '<th>';
+                    table += rowCells[rowCell]
+                    table += '</th>';
+                } else {
+                    table += '<td>';
+                    table += rowCells[rowCell]
+                    table += '</td>';
+                }
+            }
+            table += '</tr>';
+        }
+        table += '</table>';
+
+        $('#content').html(table)
+    }
+</script>
+
+</body>
+</html>
