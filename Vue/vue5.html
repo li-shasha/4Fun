@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue example 5</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        .foo{
+            color: red;
+        }
+        .bar{
+            font-size: 50px;
+        }
+        .baz{
+            border: 1px solid green;
+        }
+        .boo{
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="app">
+    <li v-for="item in items">{{item.message}}</li>
+</ul>
+
+<ul id="app2">
+    <li v-for="(item, index) in items">{{parentMsg}} - {{index}} - {{item.message}}</li>
+</ul>
+
+<ul id="v-for-object1" class="demo">
+    <li v-for="(value, key, index) in object">{{index}}:{{key}}:{{value}}</li>
+</ul>
+
+
+<div v-for="item in items" :key="item.id"></div>
+
+<ul id="app3">
+    <li v-for="n in eventNumbers">{{n}}</li>
+    <li v-for="n in even(numbers)">{{n}} </li>
+</ul>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data:{
+            items:[
+                {message: 'foo'},
+                {message: 'bar'}
+            ]
+        }
+    });
+
+    var vm1 = new Vue({
+        el: "#app2",
+        data:{
+            parentMsg: 'Parent',
+            items: [
+                {message: 'what'},
+                {message: 'ever'}
+            ]
+        }
+    })
+
+    var vmForObj = new Vue({
+        el: "#v-for-object1",
+        data:{
+            object:{
+                firstname: 'shasha',
+                lastname: "li",
+                age : 30
+            }
+        }
+    })
+
+    var vm2 = new Vue({
+        data: {
+            userProfile: {
+                name: 'lisa'
+            }
+        }
+    })
+
+
+//    Vue.set(vm2.userProfile, 'age', 29);
+//    //or
+//    this.$set(this.userProfile, 'age', 26);
+
+
+    var vm3 = new Vue({
+        el: "#app3",
+        data: {
+            numbers: [1,2,3,4,5]
+        },
+        computed: {
+            eventNumbers: function() {
+                return this.numbers.filter(function(val) { return val %2 === 0  })
+            }
+        },
+        methods: {
+            even: function() {
+                return this.numbers.filter(function(val) { return val %2 === 0  })
+            }
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>
