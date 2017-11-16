@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo example</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        #todo-list-example{
+            margin: 0 auto;
+        }
+        input {
+            height: 24px;
+            width: 240px;
+            margin-left: 20px;
+            border-radius: 5px;
+            border: 2px solid powderblue;
+        }
+        input:focus{
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            outline: none;
+        }
+        ul{
+            width: 280px;
+            padding-left: 25px;
+        }
+        li{
+            width: 240px;
+            list-style: none;
+            overflow: hidden;
+            padding: 1px;
+        }
+        button{
+            border: 1px solid powderblue ;
+            border-radius: 5px;
+            float: right;
+        }
+        input
+    </style>
+</head>
+<body>
+<!--<my-component v-for="(item, index) in items" v-bind:item="item" v-bind:index="index" v-bind:key="item.id"></my-component>-->
+<div id="todo-list-example">
+    <input
+        v-model="newTodoText"
+        v-on:keyup.enter = "addNewTodo"
+        placeholder="Add a todo"
+    >
+    <ul>
+        <li is="todo-item"
+            v-for="(todo, index) in todos"
+            v-bind:key="todo.id"
+            v-bind:title="todo.title"
+            v-on:remove="todos.splice(index, 1)"
+        ></li>
+    </ul>
+</div>
+<script>
+    Vue.component('todo-item',{
+        template: '\
+        <li>\
+        {{title}}\
+        <button v-on:click="$emit(\'remove\'\)">X</button>\
+        </li>\
+        ',
+        props: ['title']
+    })
+
+    var v1 = new Vue({
+        el: '#todo-list-example',
+        data: {
+            newTodoText: '',
+            todos: [
+                {
+                    id: 1,
+                    title: 'do 1 ---'
+                },
+                {
+                    id: 2,
+                    title: 'do 2 ----'
+                }
+            ],
+            nextTodoId : 3
+        },
+        methods: {
+            addNewTodo: function() {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText
+                });
+                this.newTodoText = '';
+            }
+        }
+    })
+</script>
+</body>
+</html>
