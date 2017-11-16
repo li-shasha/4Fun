@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue example 7</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        html,body{
+            padding:0;
+            margin: 0;
+        }
+        div{
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid powderblue;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="example-1">
+    <input v-model="message" placeholder="add message">
+    <p>my message: {{message}}</p>
+</div>
+
+<div id="example-2">
+    <span>Multiple line message:</span>
+    <p>{{message}}</p>
+    <textarea v-model="message" placeholder="add message"></textarea>
+</div>
+
+<div id="example-3">
+    <input type="checkbox" id="checkbox1" v-model="checked">
+    <label v-for="checkbox">{{checked}}</label>
+</div>
+
+<div id="example-4">
+    <input type="checkbox" id="java" value="java" v-model="checkedNames">
+    <label v-model="checkbox">java</label>
+    <input type="checkbox" id="javascript" value="javascript" v-model="checkedNames">
+    <label v-model="checkbox">javascript</label>
+    <input type="checkbox" id="python" value="python" v-model="checkedNames">
+    <label v-model="checkbox">python</label>
+    <br>
+    <span>checkedNames: {{checkedNames}}</span>
+</div>
+
+<div id="example-5">
+    <input type="radio" id="one" value="one" v-model="picked">
+    <label v-model="radio">one</label>
+    <input type="radio" id="two" value="two" v-model="picked">
+    <label v-model="radio">two</label>
+    <br>
+    <span>picked: {{picked}}</span>
+</div>
+
+<div id="example-6">
+    <select v-model="selected" multiple>
+        <option disabled value="">please select</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{selected}}</span>
+</div>
+
+<div id="example-7">
+    <select v-model="selected">
+        <option v-for="option in options" v-bind:value="option.value">{{option.text}}</option>
+    </select>
+    <span>selected: {{selected}}</span>
+</div>
+
+<div id="example-8">
+    <simple-Counter></simple-Counter>
+    <simple-Counter></simple-Counter>
+    <simple-Counter></simple-Counter>
+</div>
+
+<script>
+    var example1 = new Vue({
+        el: "#example-1",
+        data:{
+            message:''
+        }
+    });
+
+    var example2 = new Vue({
+        el:"#example-2",
+        data:{
+            message: ''
+        }
+    });
+
+    var example3 = new Vue({
+        el: "#example-3",
+        data: {
+            checked: true
+        }
+    });
+
+    var example4 = new Vue({
+        el: "#example-4",
+        data:{
+            checkedNames:[]
+        }
+    });
+
+    var example5 = new Vue({
+        el: "#example-5",
+        data: {
+            picked: 'two'
+        }
+    });
+
+    var example6 = new Vue({
+        el:"#example-6",
+        data:{
+            selected: ''
+        }
+    });
+
+    var example7 = new Vue({
+        el:"#example-7",
+        data:{
+            selected: 'A',
+            options:[
+                {value: 'A', text: "One"},
+                {value: 'B', text: "Two"},
+                {value: 'C', text: "Three"},
+            ]
+        }
+    });
+
+//    var data = {counter:0};
+    Vue.component('simple-counter',{
+        template: '<button v-on:click="counter +=1">{{counter}}</button>',
+        data: function() {
+            return {
+                counter:0
+            };
+        }
+    });
+
+   var example8 = new Vue({
+        el:"#example-8"
+    })
+
+</script>
+</body>
+</html>
