@@ -46,7 +46,7 @@
 var editor = new Vue({
     el: "#editor",
     data: {
-        input: "# Hello"
+        input: "# Hello\n ---\n_whatever you like_\n\n\`heiheihei\`\n\n**bold**\n"
     },
     methods: {
         update: _.debounce(function(e) {
@@ -55,7 +55,7 @@ var editor = new Vue({
     },
     computed: {
         compiledMarkdown: function() {
-            return marked(this.input);
+            return marked(this.input,{sanitize: true});
         }
     }
 })
