@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue example 8</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id="example-1">
+    <child my-message="hello!"></child>
+</div>
+
+<div id="example-2">
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+
+<div id="example-3">
+    <span>{{total}}</span>
+    <button-increase v-on:increase="increaseTotal"></button-increase>
+    <button-increase v-on:increase="increaseTotal"></button-increase>
+
+</div>
+<script>
+
+    Vue.component('child',{
+        props: ['MyMessage'],
+        template: '<span>{{MyMessage}}</span>'
+    })
+
+   var e1 = new Vue({
+        el: "#example-1",
+    });
+
+    var e2 = new Vue({
+        el: "#example-2",
+        data:{
+            parentMsg: 'parent message'
+        }
+    });
+
+    Vue.component('button-increase', {
+        template: '<Button v-on:click="increaseCounter">{{counter}}</Button>',
+        data: function() {
+            return {
+                counter: 0
+            }
+        },
+        methods:{
+            increaseCounter: function() {
+                this.counter += 1;
+                this.$emit('increase')
+            }
+        }
+    })
+
+    var e3 = new Vue({
+        el: "#example-3",
+        data: {
+            total:0
+        },
+        methods: {
+            increaseTotal: function() {
+              return this.total += 1
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
