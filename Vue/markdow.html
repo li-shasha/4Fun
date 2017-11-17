@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>markdown editor</title>
+    <script src="http://unpkg.com/marked@0.3.6"></script>
+    <script src="http://unpkg.com/lodash@4.16.0"></script>
+    <script src="http://unpkg.com/vue"></script>
+
+   <style>
+
+       html, body, #editor {
+           height: 100%;
+           width: 100%;
+           margin:0;
+           padding: 0;
+       }
+       textarea, #editor div {
+           display: inline-block;
+           vertical-align: top;
+           width: 49%;
+           height: 100%;
+           padding: 0 20px ;
+           box-sizing: border-box;
+           font-size: 14px;
+           font-family: 'Montserrat', 'Microsoft Yahei', sans-serif;
+       }
+       textarea {
+           border-right: 1px solid #ccc;
+           resize: none;
+           padding: 20px;
+           outline: none;
+       }
+        code {
+            color: #f66
+        }
+   </style>
+</head>
+<body>
+
+<div id="editor">
+    <textarea :value="input" @input="update"></textarea>
+    <div v-html="compiledMarkdown"></div>
+</div>
+<script>
+var editor = new Vue({
+    el: "#editor",
+    data: {
+        input: "# Hello"
+    },
+    methods: {
+        update: _.debounce(function(e) {
+            this.input = e.target.value;
+        })
+    },
+    computed: {
+        compiledMarkdown: function() {
+            return marked(this.input);
+        }
+    }
+})
+
+</script>
+</body>
+</html>
