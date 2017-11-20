@@ -1,0 +1,1 @@
+const express = require("express");var app = express() app.get("/abc/", (req, res) => {     res.send("hello lizhiying!"); });app.listen(3000, () => {    console.log("successfully !")})

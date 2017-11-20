@@ -1,0 +1,1 @@
+# 使用express， utility 输出 lishasha md5值。访问localhost：3000／？q=lishasha
