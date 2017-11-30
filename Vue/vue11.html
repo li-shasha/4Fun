@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue example11:</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+
+<script>
+    Vue.component('smar-list', {
+        functional: true,
+        render : function(createElement, context) {
+            function appropriateListComponent() {
+                var items = context.props.items;
+                if (items.length === 0) return EmptyList;
+                if (typeof items[0] ==='object') return TableList;
+                if (context.props.isOrdered) return OrderedList;
+                return UnorderedList;
+            }
+            return createElement(appropriateListComponent(),
+            context.data,
+            context.children)
+        },
+        props:{
+
+            items: {
+                type: Array,
+                required: true
+            },
+            isOrdered: Boolean
+        }
+    })
+    var mixin = {
+        created: function() {
+            console.log("mixin object is fired!")
+        },
+        methods: {
+            foo: function() {
+                console.log("foo")
+            },
+            conflicting: function() {
+                console.log('from mixin')
+            }
+        }
+    }
+
+    new Vue({
+        mixins :[mixin],
+        created: function() {
+            console.log("component is fired!")
+        }
+    })
+
+    var vm = new Vue({
+        mixins: [mixin],
+        methods:{
+            bar: function() {
+                console.log('bar')
+            },
+            conflicting: function() {
+                console.log('from component')
+            }
+        }
+    })
+</script>
+</body>
+</html>
