@@ -12,3 +12,6 @@ small example for fun
 - Promise
 - Set and Map
 
+### license
+ MIT
+
