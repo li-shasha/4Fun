@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .d1{
+            width: 50%;
+            height: 50%;
+            background-color: #cccccc;
+        }
+        .d2{
+            width: 5in;
+            height: 5in;
+            background-color: #abd5fd;
+        }
+        .d3{
+            width: 5cm;
+            height: 5cm;
+            background-color: #00a3cc;
+        }
+        .d4{
+            width: 100mm;
+            height: 100mm;
+            background-color: #00a000;
+        }
+        .d5{
+            width: 20em;
+            height: 20em;
+            background-color: #9fa8c6;
+            font-size: 10mm;
+        }
+        .d6{
+            width: 20ex;
+            height: 20ex;
+            font-size: 20mm;
+            background-color: #00a000;
+        }
+        .d7{
+            width: 144pt;
+            height: 144pt;
+            background-color: #445588;
+        }
+        .d8{
+            width: 20pc;
+            height: 20pc;
+            background-color: #ff7a07;
+        }
+        .d9{
+            width: 200px;
+            height: 200px;
+            background-color: #9fa8c6;
+        }
+        .d10{
+            width: 100vw;
+            height: 100vh;
+            background-color: #abd5fd;
+        }
+        .d11{
+            width: 50vmin;
+            height: 60vmax;
+            background-color: #5a8e00;
+        }
+        .d12{
+            width: 50ch;
+            height: 50ch;
+            font-size: 12px;
+            background-color: #abd5fd;
+        }
+        div{
+            padding: 20px 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 800px;
+            height: 800px;
+        }
+        tr th{
+            background-color:#aaaaff;
+            color: black;
+            text-align: left;
+        }
+        tr:nth-of-type(odd){
+            background-color: #abd5fd;
+        }
+        tr:nth-of-type(even){
+            background-color: #00a3cc;
+        }
+        tr td:nth-child(even){
+            padding-left: 40px;
+        }
+        tr th:nth-child(even){
+            padding-left: 40px;
+        }
+
+    </style>
+</head>
+<body>
+<div style="display: block">
+    <table>
+        <tbody><tr>
+            <th>单位</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>百分比</td>
+        </tr>
+        <tr>
+            <td>in</td>
+            <td>英寸</td>
+        </tr>
+        <tr>
+            <td>cm</td>
+            <td>厘米</td>
+        </tr>
+        <tr>
+            <td>mm</td>
+            <td>毫米</td>
+        </tr>
+        <tr>
+            <td>em</td>
+            <td>
+                <p>1em 等于当前的字体尺寸。</p>
+                <p>2em 等于当前字体尺寸的两倍。</p>
+                <p>例如，如果某元素以 12pt 显示，那么 2em 是24pt。</p>
+                <p>在 CSS 中，em 是非常有用的单位，因为它可以自动适应用户所使用的字体。</p>
+            </td>
+        </tr>
+        <tr>
+            <td>ex</td>
+            <td>一个 ex 是一个字体的 x-height。 (x-height 通常是字体尺寸的一半。)</td>
+        </tr>
+        <tr>
+            <td>pt</td>
+            <td>磅 (1 pt 等于 1/72 英寸)1pt = 1/72 in</td>
+        </tr>
+        <tr>
+            <td>pc</td>
+            <td>12 点活字 (1 pc 等于 12 点)1pc =12pt 1pc= 16px</td>
+        </tr>
+        <tr>
+            <td>px</td>
+            <td>像素 (计算机屏幕上的一个点) 1px=1/96 in</td>
+        </tr>
+        <tr>
+            <td>vw</td>
+            <td>窗口宽度的百分比。1vw = 1%* 窗口宽度</td>
+        </tr>
+        <tr>
+            <td>vh</td>
+            <td>窗口高度的百分比。1vh = 1%* 窗口高度</td>
+        </tr>
+        <tr>
+            <td>vmin</td>
+            <td>Relative to 1% of viewport's* smaller dimension，IE Chrome 不兼容</td>
+        </tr>
+        <tr>
+            <td>vmax</td>
+            <td>Relative to 1% of viewport's* larger dimension， IE Chrome 不兼容</td>
+        </tr>
+        <tr>
+            <td>rem</td>
+            <td>Relative to font-size of the root element</td>
+        </tr>
+        <tr>
+            <td>ch</td>
+            <td>Relative to width of the "0" (zero)</td>
+        </tr>
+        <tr>
+            <td>reference</td>
+            <td><a href="https://www.w3schools.com/cssref/css_units.asp">css school</a>
+                <a href="https://www.w3.org/Style/Examples/007/units.en.html">w3c</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+    <div class="d1">%(百分比):div 长度宽度均为当前页面的50%</div>
+    <div class="d2">in(英寸)：div 长度宽度均为5in</div>
+    <div class="d3">cm(厘米)：div 长度宽度均为5cm</div>
+    <div class="d4">mm(毫米)：div 长度宽度均为100mm</div>
+    <div class="d5"><strong>em</strong><br/>
+        <p>1em 等于当前的字体尺寸。<br/>
+        2em 等于当前字体尺寸的两倍。<br/>
+        font-size：10mm, div是20em，所以div 长度宽度均为20*10mm = 200mm<br/>
+        在 CSS 中，em 是非常有用的单位，因为它可以自动适应用户所使用的字体。</p>
+    </div>
+    <div class="d6"><strong>ex：</strong>一个ex就是一个字体的x-height。x-height 通常是字体尺寸的一半。字体是20mm，div长宽是 20/2 *20 =200 mm</div>
+    <div class="d7"><strong>pt</strong><br/>磅（1pt 等于1/72 英寸（in））：div 长度宽度均为144pt = 2in</div>
+    <div class="d8"><strong>pc</strong><br/>12点活字（1个pc = 12 个点） 20pc = 20* 16px = 320px </div>
+    <div class="d9"><strong>px</strong><br/>像素（计算机屏幕上的一个点）：div 长度宽度均为200px</div>
+    <div class="d10"><strong>vh， vw</strong><br/>窗口的高度和宽度：div 长度宽度均为窗口的宽度和高度</div>
+    <div class="d11"><strong>vmax， vmin</strong><br/>窗口的高度和宽度：50 vmin, 50vmax</div>
+    <div class="d12"><strong>ch</strong><br/>窗口的高度和宽度：50 ch, 50ch</div>
+</body>
+</html>
