@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100vw;
+            height: 100vh;
+        }
+        tr th{
+            background-color:#aaaaff;
+            color: black;
+            text-align: left;
+        }
+        tr:nth-of-type(odd){
+            background-color: #abd5fd;
+        }
+        tr:nth-of-type(even){
+            background-color: #00a3cc;
+        }
+        tr td:nth-child(even){
+            padding: 0 40px;
+        }
+        tr th:nth-child(even){
+            padding: 0 40px;
+        }
+        tr td:first-child{
+            padding-left: 20px;
+        }
+        tr th:first-child{
+            padding-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div style="display: block">
+    <table>
+        <tbody><tr>
+            <th>格式</th>
+            <th>描述</th>
+            <th>用途</th>
+        </tr>
+        <tr>
+            <td>PNG</td>
+            <td>
+                <p>*.png</p>
+            </td>
+            <td>
+                <p>能在保证最不失真的情况下尽可能压缩图像文件的大小。</p>
+                <p>对于需要高保真的较复杂的图像，PNG虽然能无损压缩，但图片文件较大，不适合应用在Web页面上。</p>
+				<p>一个重要的好处，并经常决定使用PNG文件的因素是，不像JPG，它们支持透明度</p>
+            </td>
+        </tr>
+        <tr>
+            <td>GIF</td>
+            <td>
+                <p>*.gif</p>
+                <p>GIFF 是一种无损，8位图片格式</p>
+							
+            </td>
+            <td>
+                <p>* Logo</p>
+                <p>* 小图标（Icon）</p>
+                <p>* 用于布局的图片（例如某个布局角落，边框等等）</p>
+                <p>* 仅包含不超过256种色彩的简单，小型图片场合</p>
+				<p>* GIF图像也可以是动画和透明度。</p>
+            </td>
+        </tr>
+        <tr>
+            <td>JPEG</td>
+            <td>
+                <p>*.jpg,  *.jpeg,  *.jpe,  *.jfif</p>
+            </td>
+            <td>
+                <p>JPG适合摄影图像或写实图像，同时也适合颜色较少图像</p>
+				<p>
+                    当图像转换为JPG时，某些质量会受到影响。 原因是因为压缩是有损的，这意味着某些不必要的信息被永久删除。 但是，JPG可以创建比使用PNG更小的文件大小
+				</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Bitmap</td>
+            <td>
+                <p>*.bmp, *.dib</p>
+                <p>Windows标准格式图形文件</p>
+            </td>
+            <td><p>位图文件图像效果好，但是非压缩格式的</p></td>
+        </tr>
+        <tr>
+            <td>TIFF</td>
+            <td>
+                <p>*.tiff, *.tif</p>
+
+            </td>
+            <td>
+                <p>标签图像文件格式(Tagged Image File Format，简写为TIFF) 是一种主要用来存储包括照片和艺术图在内的图像的文件格式</p>
+                <p>TIFF 格式可以制作质量非常高的图像，因而经常用于出版印刷。</p>
+                <p>用于在应用程序和计算机平台之间交换文件。几乎所有的桌面扫描仪都可以生成 TIFF 图像。</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web performance metrics</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100vw;
+            height: 100vh;
+        }
+        tr th{
+            background-color:#aaaaff;
+            color: black;
+            text-align: left;
+        }
+        tr:nth-of-type(odd){
+            background-color: #abd5fd;
+        }
+        tr:nth-of-type(even){
+            background-color: #00a3cc;
+        }
+        tr td:nth-child(even){
+            padding: 0 40px;
+        }
+        tr th:nth-child(even){
+            padding: 0 40px;
+        }
+        tr td:first-child{
+            padding-left: 20px;
+        }
+        tr th:first-child{
+            padding-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div style="display: block">
+    <table>
+        <tbody><tr>
+            <th>性能指标</th>
+            <th>描述</th>
+            <th>指标参考</th>
+            <th>检查方法</th>
+        </tr>
+        <tr>
+            <td>页面加载时间</td>
+            <td>
+                <p>从页面开始加载到页面onload事件触发的时间。一般来说onload触发代表着直接通过HTML引用的CSS，JS，图片资源已经完全加载完毕。</p>
+            </td>
+            <td></td>
+            <td>
+                chrome dev tools
+            </td>
+        </tr>
+        <tr>
+            <td>全部页面加载时间<br/>
+                Page Load Time</td>
+            <td>
+                <p>全部页面载入时间指从最初启动浏览开始，直到所有元素都被加载完成后，在2秒后仍然没有网络活动的时间。</p>
+            </td>
+            <td>
+                <p>0-2秒：用户体验最好，打分100</p>
+                <p>2-8秒：用户可以容忍，从第2秒开始，每超过1秒减5分</p>
+                <p>8-15秒：用户不能忍受，从第2秒开始，每超过1秒减5分</p>
+            </td>
+            <td>
+               chrome dev tools
+            </td>
+        </tr>
+        <tr>
+            <td>首字节时间<br/>
+                time to first byte</td>
+            <td>
+                <p>从开始加载到收到服务器返回数据的第一字节的时间</p>
+            </td>
+            <td>
+                <p>达标时间=DNS解析时间+创建连接时间+SSL认证时间+100ms. 比达标时间每慢10ms减1分.</p>
+                <p>0-1秒：用户体验最好</p>
+                <p>1-2秒：用户可以容忍</p>
+                <p>2-3秒：用户不能容忍</p>
+            </td>
+            <td>
+                chrome dev tools
+            </td>
+        </tr>
+        <tr>
+            <td>DNS时间</td>
+            <td>
+                <p>进行域名解析所需要的时间</p>
+
+            </td>
+            <td>
+                <p>0-50毫秒 100分</p>
+                <p>50-500毫秒 一般，可能会影响用户体验，从50毫秒开始，每增加10毫秒则减去2分</p>
+                <p>500毫秒以上，严重影响⽤用户的网页体验，从50毫秒开始，每增加10毫秒则减去2分</p>
+            </td>
+            <td>
+                chrome dev tools
+            </td>
+        </tr>
+        <tr>
+            <td>TCP时间</td>
+            <td>
+                <p>客户端建立连接的时间</p>
+
+            </td>
+            <td>
+                <p>0-100毫秒 100分</p>
+                <p>100-500毫秒，一般，可能会影响用户体验，从100毫秒开始，没增加10毫秒，减去1分</p>
+                <p>500毫秒以上，严重影响⽤用户的网页体验，从100毫秒开始，每增加10毫秒，减去1分</p>
+            </td>
+            <td>
+                chrome dev tools
+            </td>
+        </tr>
+        <tr>
+            <td>请求响应时间</td>
+            <td>
+                <p>请求响应时间指的是从客户端发起的一个请求开始，到客户端接收到从服务器端返回的响应结束</p>
+                <p>响应时间＝网络响应时间+应用程序响应时间</p>
+            </td>
+            <td>
+                <p>在3秒钟之内，页面给予用户响应并有所显示，可认为是“很不错的”</p>
+                <p>在3~5秒钟内，页面给予用户响应并有所显示，可认为是“好的”</p>
+                <p>在5~10秒钟内，页面给予用户响应并有所显示，可认为是“勉强接受的”</p>
+                <p>超过10秒就让人有点不耐烦了，用户很可能不会继续等待下去</p>
+            </td>
+            <td>
+                chrome dev tools
+            </td>
+        </tr>
+        <tr>
+            <td>事务响应时间</td>
+            <td>
+                <p>一个事务表示一个“从用户发送请求->web server接受到请求，进行处理-> web server向DB获取数据->生成用户的object(页面)，<br/>
+                    返回给用户”的过程，一般的响应时间都是针对事务而言的。</p>
+                <p>事务可能由一系列请求组成,事务的响应时间主要是针对用户而言,属于宏观上的概念，是为了向用户说明业务响应时间而提出的.<br/>
+                    例如:跨行取款事务的响应时间就是由一系列的请求组成的.事务响应时间是直接衡量系统性能的参数.</p>
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>并发用户数<br/>Concurrent users
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+            </td>
+            <td>
+                测试工具
+            </td>
+        </tr>
+        <tr>
+            <td>吞吐量<br/>
+                Throughput</td>
+            <td>
+                <p>指的是在一次性能测试过程中网络上传输的数据量的总和.吞吐量/传输时间,就是吞吐率.</p>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>TPS<br/>
+                Transaction Per Second</td>
+            <td>
+                <p>每秒钟系统能够处理的交易或者事务的数量.它是衡量系统处理能力的重要指标.</p>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>点击率</td>
+            <td>
+                <p>每秒钟用户向WEB服务器提 交的HTTP请求数<br/>
+                   这里的点击并非指鼠标的一次单击操作,因为在一次单击操作中,客户端可能向服务器发出多个HTTP请求</p>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>资源利用率</td>
+            <td>
+                <p>指的是对不同的系统资源的使用程度， 例如服务器的CPU利用率,磁盘利用率等.</p>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
