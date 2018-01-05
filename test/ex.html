@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form action="/process" method="POST">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+        Favorite color: <input type="text" name="favoriteColor">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
