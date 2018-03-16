@@ -1,0 +1,1 @@
+var http = require("http");var hostname =  "127.0.0.1"var port = 3000;var server = http.createServer((rep, res) => {    res.statusCode="200";    res.setHeader('Content-Type', 'text-plain');    res.end("hello world!");});server.listen(port, hostname, () => {    console.log("server is running at 127.0.0.1:3000");})
