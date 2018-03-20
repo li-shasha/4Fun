@@ -12,6 +12,9 @@ small example for fun
 - Promise
 - Set and Map
 
+### Refactor the project stucture
+- add grunt task
+
 ### license
  MIT
 
