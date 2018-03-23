@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div>
+    <select name="mySelect" id="test"></select>
+    <input type="button" value="addAll" id="addBtn">
+    <input type="button" value="remove" id="removeBtn">
+    <input type="button" value="change" id="changeBtn">
+
+</div>
+
+
+<script>
+
+
+
+   var select = document.getElementById("test");
+   var addBtn = document.getElementById("addBtn");
+   var removeBtn = document.getElementById("removeBtn");
+   var changeBtn = document.getElementById("changeBtn");
+   var selectIndex = 0;
+
+   addBtn.onclick = function() {
+       var cities = ["beijing", "shanghai", "shenzhen"]
+       for (var city in cities){
+           select.options.add(new Option(cities[city]))
+       }
+
+//       select.options[2].selected = true; //selectIndex 一样
+   }
+
+    removeBtn.onclick =function() {
+        select.options.remove(selectIndex)
+    }
+
+   changeBtn.onclick = function() {
+       select.options[selectIndex] = new Option("Los Angles")
+   }
+
+    select.onchange = function() {
+        selectIndex  = select.selectedIndex;
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
