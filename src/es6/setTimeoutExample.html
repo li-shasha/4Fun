@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set timeout example</title>
+</head>
+<body>
+
+
+<div>
+
+
+    <input id="test" type="text" oninput="writeContent()">
+</div>
+
+<script>
+   function writeContent(){
+       setTimeout(function() {
+           alert(document.getElementById('test').value)
+       },0)
+    }
+//
+//    console.log("1, ", new Date())
+//    var result =0;
+//    for (var i = 0; i<10000000; i++){
+//        result = result +i;
+//    }
+//
+//    console.log('i am here!!!!!!!!:', result)
+//    setTimeout(function() {
+//        console.log("2, ", new Date())
+//    },0)
+
+
+const s = new Date().getSeconds();
+
+setTimeout(function() {
+    // prints out "2", meaning that the callback is not called immediately after 500 milliseconds.
+    console.log("Ran after " + (new Date().getSeconds() - s) + " seconds");
+}, 500);
+
+while(true) {
+    if(new Date().getSeconds() - s >= 2) {
+        console.log("Good, looped for 2 seconds");
+        break;
+    }
+}
+</script>
+</body>
+</html>

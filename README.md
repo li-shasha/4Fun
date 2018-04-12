@@ -5,6 +5,8 @@ small example for fun
 
 - flex: calculator
 - canvas: stars
+- preserve-3d flip example for IE11
+    - [IE flip issue](./src/html/lisa_test_preserve-3d-issue.html)
 
 ### add Vue examples
 

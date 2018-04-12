@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .flip-container {
+            perspective: 1000px;
+        }
+        .flip-container:hover .flipper .front {
+            animation: 10.5s ease-out flip1;
+        }
+        .flip-container:hover .flipper .back {
+            animation: 10.5s ease-out flip2;
+        }
+
+        .flip-container, .front, .back {
+            width: 320px;
+            height: 480px;
+            transition: 10.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .front, .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 400px;
+        }
+
+        .front {
+            z-index: 2;
+            background-color: red;
+            transform-origin: right center;
+        }
+
+        .back {
+            background-color: pink;
+            transform-origin: left center;
+        }
+
+        @keyframes flip1 {
+            from {
+                transform: translateX(0) rotateY(0);
+            }
+            to {
+                transform: translateX(-100%) rotateY(-180deg);
+            }
+        }
+        @keyframes flip2 {
+            from {
+                transform: translateX(100%) rotateY(-180deg);
+            }
+            to {
+                transform: translateX(0) rotateY(-360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="flip-container">
+    <div class="flipper">
+        <div class="front">
+            I am front
+        </div>
+
+        <div class="back">
+            I am back
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

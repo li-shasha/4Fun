@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <style>
+
+        .flip-container {
+            perspective: 1000px;
+        }
+        .flip-container:hover .flipper, .flip-container.hover .flipper {
+            animation: 10.5s ease-out flip;;
+        }
+
+        .flip-container, .front, .back {
+            width: 320px;
+            height: 480px;
+        }
+
+        .flipper {
+            transition: 10.6s;
+            transform-style: preserve-3d;
+            transform-origin: right center;
+            position: relative;
+        }
+
+        .front, .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .front {
+            z-index: 2;
+            /* for firefox 31 */
+            transform: rotateY(0deg);
+            background-color: red;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            background-color: pink;
+        }
+
+        @keyframes flip {
+            from {
+                transform: translateX(0) rotateY(0);
+            }
+            to {
+                transform: translateX(-100%) rotateY(-180deg);
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div class="flip-container">
+    <div class="flipper">
+        <div class="front">
+            I am front
+        </div>
+
+        <div class="back">
+            I am back
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <h1>问题： IE11中，parent上翻转的时候backface-visibility ：hidden 依然可以看到front的面的mirror版本</h1>
+    <p>原因：IE11 及以下版本不支持  preserve-3d, Edge 已经支持。 </p>
+    <p>解决方案： 请查看<a href="lisa_test_preserve-3d-solution.html">例子</a></p>
+</div>
+
+
+<script>
+
+</script>
+</body>
+</html>
