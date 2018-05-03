@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Lina</title>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="//unpkg.com/vue/dist/vue.js"></script>
-    <script src="//unpkg.com/element-ui@2.3.7/lib/index.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.3.7/lib/index.js"></script>
     <style>
 
         html,body{
             font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
         }
-        .leftlabel{
+        .leftlabel {
             margin: 0;
             color: #409eff;
             font-weight: bold;
@@ -20,22 +20,31 @@
             line-height: 32px;
 
         }
-        .leftpanel{
+        .leftpanel {
             min-width: 500px;
         }
         .reportLabel{
             padding-right: 20px;
         }
         .midPanel{
-            min-width: 800px;
+            min-width: 700px;
         }
-        .rightpanel{
-            min-width: 350px;
+        .rightpanel {
+            min-width: 440px;
         }
         .reportDetail {
             border: 1px solid rgba(159,174,199,0.5);
             margin-top: 20px;
             height: 800px;
+            width: 100%;
+        }
+        .reportDetail .el-row{
+            width: 100%;
+            padding: 10px;
+        }
+
+        label {
+            color: #909399;
         }
         .el-menu-item{
             font-size: 16px;
@@ -45,11 +54,17 @@
          display: inline-flex;
         }
 
+        .el-radio {
+            padding-left: 15px;
+        }
         .el-tree {
             border: 1px solid rgba(159,174,199,0.5);
             padding-top: 20px ;
-            height: 300px ;
-            min-height: 300px;
+            height: 550px ;
+            min-height: 550px;
+        }
+        .rightpanel .top{
+            max-height: 300px;
         }
     </style>
 </head>
@@ -112,10 +127,80 @@
                     <el-button type="primary" plain round size="small">PDF导出</el-button>
                 </el-row>
 
-               <el-container class="reportDetail">
+               <el-container class="reportDetail" direction="horizontal">
 
                    <!--reportdetail-->
 
+                   <el-row>
+                       <el-col>
+                           <h3>某某市第一人民医院超生诊断报告</h3>
+                       </el-col>
+
+                   </el-row>
+                   <el-row :gutter="20">
+                       <el-col :span="3">
+                           <label>姓名：</label>
+                       </el-col>
+                       <el-col :span="3">
+                           <label class="labelvalue">张三</label>
+                       </el-col>
+                       <el-col>
+                           <label>患者性别:</label>
+                       </el-col>
+
+                       <el-col>
+                           <label class="labelvalue">男</label>
+                       </el-col>
+                       <el-col>
+                           <label>患者年龄:</label>
+                       </el-col>
+                       <el-col>
+                           <label class="labelvalue">55岁</label>
+                       </el-col>
+                   </el-row>
+
+                   <el-row>
+                       <el-col>
+                           <label>门诊号：</label>
+                       </el-col>
+                       <el-col>
+                           <label class="labelvalue">1111111</label>
+                       </el-col>
+                       <el-col>
+                           <label>超声号:</label>
+                       </el-col>
+
+                       <el-col>
+                           <label class="labelvalue">222222</label>
+                       </el-col>
+                       <el-col>
+                           <label>检查日期:</label>
+                       </el-col>
+                       <el-col>
+                           <label class="labelvalue">2018/3/29 10：16</label>
+                       </el-col>
+                   </el-row>
+                   <el-row>
+                       <el-col>
+                           <label>科室：</label>
+                       </el-col>
+                       <el-col>
+                           <label class="labelvalue">--</label>
+                       </el-col>
+                       <el-col>
+                           <label>临床诊断:</label>
+                       </el-col>
+
+                       <el-col>
+                           <label class="labelvalue">----</label>
+                       </el-col>
+                       <el-col>
+                           <label>报告日期:</label>
+                       </el-col>
+                       <el-col>
+                           <label class="labelvalue">2018/3/29 11：16</label>
+                       </el-col>
+                   </el-row>
 
                </el-container>
             </el-main>
@@ -127,14 +212,62 @@
 
         <!--right-->
 
-
         <el-container direction="vertical" class="rightpanel">
 
-            <el-main>
-                    <!--<el-select v-model="form.template" placeholder="请选择">-->
-                        <!--<el-option label="区域一" value="shanghai"></el-option>-->
-                        <!--<el-option label="区域二" value="beijing"></el-option>-->
-                    <!--</el-select>-->
+            <el-main class="top">
+                <el-row>
+                    <label>报告单模版:
+                        <template>
+                            <el-select placeholder="请选择" size="small" style="padding-left: 10px">
+                                <el-option label="模版一" value="shanghai"></el-option>
+                                <el-option label="模版二" value="beijing"></el-option>
+                            </el-select>
+                        </template>
+
+                        <template>
+                            <!-- `checked` 为 true 或 false -->
+                            <el-checkbox style="padding-left: 10px">显示后台</el-checkbox>
+                        </template>
+
+                    </label>
+                </el-row>
+
+                <el-row>
+                    <label>检查状态：
+                        <template>
+                            <el-radio v-model="radio" label="1">阴性</el-radio>
+                            <el-radio v-model="radio" label="2">阳性</el-radio>
+                        </template>
+                    </label>
+
+                </el-row>
+
+                <el-row>
+                    <label>报告单类型:
+                        <template>
+                            <el-select placeholder="请选择" size="small" style="padding-left: 10px">
+                                <el-option label="模版一" value="shanghai"></el-option>
+                                <el-option label="模版二" value="beijing"></el-option>
+                            </el-select>
+                        </template>
+
+                    </label>
+                </el-row>
+                <hr>
+                <el-row>
+                    <el-button size="medium" style="width: 98px">申请单</el-button>
+                    <el-button size="medium">查看病例</el-button>
+                    <el-button size="medium">查看化验</el-button>
+
+                </el-row>
+
+                <el-row>
+                    <el-button size="medium">历史记录</el-button>
+                    <el-button size="medium">修改记录</el-button>
+
+                </el-row>
+
+
             </el-main>
 
             <el-main>
@@ -203,6 +336,7 @@
                         children: 'children',
                             label: 'label'
                     },
+                    radio: '1'
 
                 }
             }
