@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="outer"> outer
+    <div id="inner"> inner
+        <span id="content">
+        content
+    </span>
+    </div>
+</div>
+
+<script>
+
+    var outer = document.getElementById("outer");
+    var inner = document.getElementById("inner");
+    var content = document.getElementById("content");
+
+    outer.addEventListener("click",function(e) {
+        alert("outter"+ e.target.nodeName+ e.currentTarget.nodeName)
+    },true)
+    inner.addEventListener("click",function(e) {
+        alert("inner"+ e.target.nodeName+ e.currentTarget.nodeName)
+    },true)
+    content.addEventListener("click",function(e) {
+        alert("content"+ e.target.nodeName+ e.currentTarget.nodeName);
+//        e.stopPropagation();
+    },true)
+
+
+
+</script>
+</body>
+</html>
