@@ -10,6 +10,8 @@
 
         html,body{
             font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+            margin:0;
+            padding: 0;
         }
         .leftlabel {
             margin: 0;
@@ -32,18 +34,41 @@
         .rightpanel {
             min-width: 440px;
         }
+
+        .rightpanel .el-input{
+            width: 150px;
+        }
         .reportDetail {
             border: 1px solid rgba(159,174,199,0.5);
             margin-top: 20px;
-            height: 800px;
             width: 100%;
         }
         .reportDetail .el-row{
             width: 100%;
-            padding: 10px;
+            padding: 4px;
+        }
+        .reportDetail .el-row:last-child{
+            line-height: 32px;
         }
 
-        label {
+        .reportDetail h3{
+            text-align: center;
+            color: #909399;
+            margin: 0;
+            padding: 2px;
+            background-color: rgba(159,174,199,0.5);
+        }
+
+        .reportDetail .tips {
+            background-color:rgba(159,174,199,0.5) ;
+            margin-bottom: 40px;
+        }
+        .reportDetail .ptips {
+            margin:0;
+            line-height: 32px;
+        }
+
+        label, p {
             color: #909399;
         }
         .el-menu-item{
@@ -86,7 +111,7 @@
                     </el-table-column>
                     <el-table-column prop="address" label="地址">
                     </el-table-column>
-                    <el-table-column prop="date" label="日期">
+                    <el-table-column prop="date" label="日期" sortable>
                     </el-table-column>
                 </el-table>
             </el-main>
@@ -96,7 +121,8 @@
                     <p class="leftlabel">叫号列表</p>
                 </div>
                 <el-table :data="tableData">
-
+                    <el-table-column prop="id" label="排队号" sortable>
+                    </el-table-column>
                     <el-table-column prop="name" label="姓名">
                     </el-table-column>
                     <el-table-column prop="address" label="地址">
@@ -127,85 +153,183 @@
                     <el-button type="primary" plain round size="small">PDF导出</el-button>
                 </el-row>
 
-               <el-container class="reportDetail" direction="horizontal">
+
+               <el-main class="reportDetail">
 
                    <!--reportdetail-->
-
                    <el-row>
                        <el-col>
                            <h3>某某市第一人民医院超生诊断报告</h3>
                        </el-col>
 
                    </el-row>
-                   <el-row :gutter="20">
+                   <el-row>
                        <el-col :span="3">
                            <label>姓名：</label>
                        </el-col>
-                       <el-col :span="3">
+                       <el-col :span="5">
                            <label class="labelvalue">张三</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="3">
                            <label>患者性别:</label>
                        </el-col>
 
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">男</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="3">
                            <label>患者年龄:</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">55岁</label>
                        </el-col>
                    </el-row>
-
                    <el-row>
-                       <el-col>
+                       <el-col :span="3">
                            <label>门诊号：</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">1111111</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="3">
                            <label>超声号:</label>
                        </el-col>
 
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">222222</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="3">
                            <label>检查日期:</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">2018/3/29 10：16</label>
                        </el-col>
                    </el-row>
                    <el-row>
-                       <el-col>
+                       <el-col :span="3">
                            <label>科室：</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">--</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="3">
                            <label>临床诊断:</label>
                        </el-col>
 
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">----</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="3">
                            <label>报告日期:</label>
                        </el-col>
-                       <el-col>
+                       <el-col :span="5">
                            <label class="labelvalue">2018/3/29 11：16</label>
                        </el-col>
                    </el-row>
+                   <el-row>
+                       <el-col :span="3">
+                           <label>检查名称：</label>
+                       </el-col>
+                       <el-col :span="4">
+                           <el-input v-model="input" placeholder="请输入内容" size="small"></el-input>
+                       </el-col>
+                       <el-col :span="3" offset="1">
+                           <label>检查途径:</label>
+                       </el-col>
 
-               </el-container>
-            </el-main>
+                       <el-col :span="4">
+                           <template>
+                               <el-select placeholder="默认仪器" size="small">
+                                   <el-option label="仪器一" value="shanghai"></el-option>
+                                   <el-option label="仪器二" value="beijing"></el-option>
+                               </el-select>
+                           </template>
+                       </el-col>
+                       <el-col :span="3" offset="1">
+                           <label>仪器型号:</label>
+                       </el-col>
+                       <el-col :span="4">
+                           <label class="labelvalue">---</label>
+                       </el-col>
+                   </el-row>
+                   <el-row justify="end" type="flex">
+                       <el-button size="small">图像采集</el-button>
+                       <el-button size="small">导入图像</el-button>
+                       <el-button size="small">缓存图像</el-button>
+                       <el-button size="small">开始录像</el-button>
+                   </el-row>
+                   <el-row>
+                       <el-col :span="6" offset="1"><img src="../cat/1.jpg" alt="1"></el-col>
+                       <el-col :span="6"><img src="../cat/2.jpg" alt="2"></el-col>
+                       <el-col :span="6"><img src="../cat/3.jpg" alt="3"></el-col>
+                   </el-row>
 
-            <el-main>
+                   <el-row style="background-color: #abd5fd">
+                       <!--toolbar  -->
+                       todo..
+                   </el-row>
+                   <el-row>
+                       <el-col :span="3"> <p class ="ptips">超声所见：</p></el-col>
+                       <el-col :span="2" offset="19"> <el-button size="small">存模板</el-button></el-col>
+                   </el-row>
+                   <el-row class="tips">
+
+                       <p >1. 如果您想学习 JavaScript，您可以学习本教程：
+                           了解 JavaScript 是如何与 HTML 和 CSS 一起工作的。<br>
+                        2. 如果在此之前您已经使用过 JavaScript，您也可以阅读本教程：
+                           JavaScript 一直在升级，所以我们需要时刻了解 JavaScript 的新技术。</p>
+                   </el-row>
+
+                    <el-row><el-col :span="3"><p class ="ptips">超声提示：</p></el-col></el-row>
+
+                   <el-row class="tips">
+                       <p>1. 如果您想学习 JavaScript，您可以学习本教程：
+                           了解 JavaScript 是如何与 HTML 和 CSS 一起工作的。<br>
+                          2. 如果在此之前您已经使用过 JavaScript，您也可以阅读本教程：
+                           JavaScript 一直在升级，所以我们需要时刻了解 JavaScript 的新技术。</p>
+                   </el-row>
+                   <el-row>
+                       <el-col :span="3">
+                           <label>检查医生：</label>
+                       </el-col>
+                       <el-col :span="4">
+                           <template>
+                               <el-select placeholder="医生1" size="mini">
+                                   <el-option label="医生1" value="shanghai"></el-option>
+                                   <el-option label="医生2" value="beijing"></el-option>
+                               </el-select>
+                           </template>
+                       </el-col>
+                       <el-col :span="3" offset="1">
+                           <label>记录医生:</label>
+                       </el-col>
+
+                       <el-col :span="4">
+                           <template>
+                               <el-select placeholder="主任医生" size="mini">
+                                   <el-option label="主任医生-" value="shanghai"></el-option>
+                                   <el-option label="主任医生二" value="beijing"></el-option>
+                               </el-select>
+                           </template>
+                       </el-col>
+                       <el-col :span="3" offset="1">
+                           <label>申请医生:</label>
+                       </el-col>
+                       <el-col :span="4">
+                           <template>
+                               <el-select placeholder="申请医生" size="mini">
+                                   <el-option label="医生-" value="shanghai"></el-option>
+                                   <el-option label="医生二" value="beijing"></el-option>
+                               </el-select>
+                           </template>
+                       </el-col>
+                   </el-row>
+                   <hr>
+                   <el-row>
+                       <p style="margin: 0">备注: 仅作本院使用，不作其他用途</p>
+                   </el-row>
+
+               </el-main>
 
             </el-main>
         </el-container>
@@ -291,6 +415,7 @@
         var Main = {
             data() {
                 const item = {
+                    id: '1',
                     name: '王小虎',
                     address: '上海市',
                     date: '2016-05-02'
@@ -336,7 +461,8 @@
                         children: 'children',
                             label: 'label'
                     },
-                    radio: '1'
+                    radio: '1',
+                    input:''
 
                 }
             }
