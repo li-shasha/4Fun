@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        html, body, main {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue',Helvetica,sans-serif;
+
+        }
+        main {
+            overflow-y: scroll;
+        }
+        section{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 100px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        #html{
+            background-color: #abd5fd;
+        }
+        #css {
+            background-color: #9fa8c6;
+        }
+        #javascript {
+            background-color: #ff7a07;
+        }
+        nav {
+            position: absolute;
+            left:50%;
+            display: flex;
+            justify-content: space-between;
+            background-color: black;
+            border-radius: 0 0 5px 5px;
+            font-size: 20px;
+            width: 400px;
+            margin-left: -200px;
+            text-align: center;
+            padding: 15px;
+
+        }
+        a {
+            width: 100px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .checkbox {
+            width: 50px;
+            height: 50px;
+            top: 50px;
+            left: 50px;
+            background-color: white;
+            position: absolute;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #on:checked ~ .checkbox::after {
+            content: '✔';
+            font-size: 50px;
+            line-height: 1;
+            color: #00ae8b;
+        }
+
+        #on:checked ~ main {
+            scroll-behavior: smooth;
+        }
+
+        #on {
+            position: absolute;
+            opacity: 0;
+        }
+    </style>
+
+</head>
+<body>
+<nav>
+    <a href="#html">HTML</a>
+    <a href="#css">CSS</a>
+    <a href="#javascript">JS</a>
+</nav>
+
+<input type="checkbox" id="on">
+<label for="on" class="checkbox"></label>
+<main>
+    <section id="html">HTML</section>
+    <section id="css">CSS</section>
+    <section id="javascript">JAVASCRIPT</section>
+</main>
+
+</body>
+</html>
