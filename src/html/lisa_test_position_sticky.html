@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            width: 100%;
+            height: 100%;
+            background-color: #777;
+        }
+
+        header {
+            width: 70%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 5px;
+            padding: 50px;
+        }
+        .content{
+            width: 100%;
+            height: 40px;
+            background: repeating-linear-gradient(0deg, #777, #777 10px, #fff 10px, #fff 40px);
+            border-top: 10px solid #777;
+        }
+
+
+        main {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        section {
+            width: 60%;
+            padding: 50px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        section .content {
+            height: 800px;
+        }
+
+        #on {
+            opacity: 0;
+            position: absolute;
+        }
+        .checkbox {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            cursor: pointer;
+
+        }
+        #on:checked ~.checkbox::after{
+            content: "✔";
+            line-height: 1;
+            font-size: 50px;
+            color: green;
+        }
+        #on:checked ~ aside{
+            position: sticky;
+        }
+    </style>
+</head>
+<body>
+
+<input type="checkbox" id="on">
+<label for="on" class="checkbox"></label>
+
+<header>
+    <div class="content"></div>
+</header>
+<main>
+    <section>
+        <div class="content"></div>
+    </section>
+    <aside>
+
+        <input type="text">
+    </aside>
+</main>
+</body>
+</html>
