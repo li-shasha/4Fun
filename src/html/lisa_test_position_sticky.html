@@ -12,6 +12,7 @@
             width: 100%;
             height: 100%;
             background-color: #777;
+            box-sizing: border-box;
         }
 
         header {
@@ -33,12 +34,13 @@
             width: 70%;
             display: flex;
             justify-content: center;
-            margin-top: 50px;
+            margin: 50px auto;
         }
 
         section {
             width: 60%;
             padding: 50px;
+            margin-left: -50px;
             background-color: white;
             border-radius: 5px;
         }
@@ -68,8 +70,19 @@
             font-size: 50px;
             color: green;
         }
-        #on:checked ~ aside{
+        #on:checked ~ main aside{
             position: sticky;
+            top: 50px;
+        }
+        aside {
+            width: 40%;
+            height: 100px;
+            border: 10px solid white;
+            background-color: #00a3cc;
+            margin-left: 50px;
+            border-radius: 5px;
+
+
         }
     </style>
 </head>
@@ -87,7 +100,7 @@
     </section>
     <aside>
 
-        <input type="text">
+
     </aside>
 </main>
 </body>
