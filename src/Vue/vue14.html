@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example14</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id="app">
+    <my-component></my-component>
+</div>
+
+<!--<script type="text/x-handlebars-template" id="myComponent">-->
+
+    <!--<div>hhhhhhhhhhhhhhhhhhhhhh</div>-->
+<!--</script>-->
+
+<template id="myComponent">
+    <div> jjjjjjjjjjjjjjjjjjj</div>
+</template>
+
+<script>
+
+    Vue.component('my-component', {
+        template: "#myComponent"
+    })
+    new Vue({
+        el: "#app"
+    })
+</script>
+</body>
+</html>

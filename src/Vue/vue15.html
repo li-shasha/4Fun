@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example15</title>
+    <script src="http://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="../css/demo.css">
+</head>
+<body>
+
+<div id="app">
+    <my-components :my-name="name" :my-age="age"></my-components>
+</div>
+
+<template id="myComponent">
+    <table>
+        <tr>
+            <th colspan="2">
+                子组件数据
+            </th>
+        </tr>
+        <tr>
+            <td>my name</td>
+            <td>{{ myName }}</td>
+        </tr>
+        <tr>
+            <td>my age</td>
+            <td>{{ myAge }}</td>
+        </tr>
+    </table>
+</template>
+
+<script>
+
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            name: "lisa",
+            age: 28
+        },
+        components: {
+            'my-components': {
+                template: "#myComponent",
+                props: ['my-name','my-age']
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

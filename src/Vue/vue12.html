@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue example12</title>
+    <script src="http://unpkg.com/vue"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>-->
+</head>
+<body>
+
+<div id="app">
+    <my-component></my-component>
+</div>
+<div id="app1">
+    <my-component></my-component>
+</div>
+
+<script>
+
+    var myComponent = Vue.extend({
+        template: "<div>This is my first component!</div>"
+    });
+
+    //全局注册组件
+    Vue.component('my-component', myComponent);
+
+    new Vue({
+        el: "#app",
+        //局部注册 组件
+        // components: {
+        //     'my-component': myComponent
+        // }
+    })
+
+    new Vue({
+        el: "#app1",
+    })
+</script>
+
+</body>
+</html>
